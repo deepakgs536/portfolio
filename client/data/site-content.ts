@@ -96,26 +96,24 @@ export const projects = [
         "Engineered a WebSocket-based architecture using Node.js and Socket.io for real-time communication. Designed a clean, intuitive interface emphasizing game clarity and quick interactions. Integrated chat and lobby systems for seamless user engagement.",
       techUsed: ["React", "Express", "Socket.io", "MongoDB"],
      metrics:
-      "Introduced a live chat system with instant message delivery",
+      "Server response time reduced by 50ms on average; 99.9% uptime maintained across all core features.",
     },
   },
   {
-    id: "chronos-crm-web",
-    title: "Chronos CRM Backend & API",
-    category: "Full-Stack Development, Architecture",
-    thumbnailImage: "/images/chronos-thumb.svg",
-    link: "/portfolio/chronos-crm",
+    id: "inventsmart-ai",
+    title: "InventSmart AI",
+    category: "Full-Stack Development",
+    thumbnailImage: "/images/smart-inventory-thumb.png",
+    link: "https://inventsmart-ai.onrender.com/landing",
     caseStudy: {
       summary:
-        "Developed a high-performance RESTful API and implemented the frontend dashboard for a customer relationship management system.",
+        "AI-powered inventory tracking, sales analytics, and business insights. Transform your business with intelligent automation.",
       role: "Full-Stack Developer",
-      challenge:
-        "Latency issues due to an outdated Python/Django system hindered real-time data flow for sales agents.",
       solution:
         "Rebuilt the API using Node.js and PostgreSQL. The frontend was deployed with Next.js to leverage Server-Side Rendering for maximum speed and SEO performance.",
-      techUsed: ["Next.js", "PostgreSQL", "REST API", "TypeScript"],
+      techUsed: ["Next.js", "PostgreSQL", "MongoDB", "REST API", "TypeScript"],
       metrics:
-        "Server response time reduced by 50ms on average; 99.9% uptime maintained across all core features.",
+        "Introduced a live chat system with instant message delivery",
     },
   },
 ];

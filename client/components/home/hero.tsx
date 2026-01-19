@@ -1,11 +1,32 @@
 import { personalInfo } from "@/data/site-content";
 import { getIcon } from "@/lib/icons";
+import { Key } from "lucide-react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export const Hero = () => {
   const ArrowIcon = getIcon("ArrowUpRight");
   const SparklesIcon = getIcon("Sparkles");
   const QuoteIcon = getIcon("Quote");
+
+    const isActives = ["LinkedIn", "GitHub", "Leetcode"];
+    const [isHovered, setIsHovered] = useState<string>("");
+    const [isActive, setIsActive] = useState<string>("LinkedIn");
+
+    useEffect(() => {
+      if (isHovered) {
+        setIsActive("");
+        return;
+      }
+      const interval = setInterval(() => {
+        setIsActive((prev) => { 
+          const currentIndex = isActives.indexOf(prev);
+          const nextIndex = (currentIndex + 1) % isActives.length;
+          return isActives[nextIndex];
+        } );
+      }, 500);
+      return () => clearInterval(interval);
+    }, [isHovered]);
 
   return (
     <section id="home" className="relative overflow-hidden">
@@ -71,7 +92,7 @@ export const Hero = () => {
               </p>
             </div>
             <div className="mt-4 md:mt-8 flex items-center justify-between">
-              <div className="flex gap-2">
+              <div className="flex gap-3">
                 {personalInfo.socialLinks.map((link) => {
                   const Icon = getIcon(link.icon);
                   return (
@@ -80,9 +101,15 @@ export const Hero = () => {
                       href={link.url}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border/70 text-foreground/70 transition-all hover:-translate-y-0.5 hover:border-foreground hover:text-foreground"
+                      className={`group relative inline-flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-300 ${
+                          isActive === link.name || isHovered === link.name
+                          ? 'border-foreground text-foreground shadow-lg scale-110'
+                          : 'border-border/70 text-foreground/70 hover:border-foreground hover:text-foreground'
+                      } hover:-translate-y-0.5`}
+                      onMouseEnter={()=>setIsHovered(link.name)} 
+                      onMouseLeave={()=>setIsHovered("")}
                     >
-                      <Icon className="h-4 w-4" />
+                      <Icon className="h-5 w-5" />
                     </a>
                   );
                 })}

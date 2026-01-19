@@ -1,5 +1,6 @@
 import { personalInfo, sections } from "@/data/site-content";
 import { getIcon } from "@/lib/icons";
+import { handleDownload } from "@/pages/resume";
 import { Link } from "react-router-dom";
 
 const contactItems = [
@@ -106,14 +107,12 @@ export const Footer = () => {
                 );
               })}
             </div>
-            <a
-              href={personalInfo.resumeURL}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-3 rounded-full border border-border/80 px-4 py-2 text-sm font-semibold text-foreground/80 transition-all hover:-translate-y-0.5 hover:border-foreground hover:text-foreground"
+            <button
+              onClick={()=>handleDownload}
+              className="inline-flex items-center gap-3 rounded-full border border-border/80 px-4 py-2 text-sm font-semibold text-foreground/80 transition-all hover:-translate-y-0.5 hover:border-foreground hover:text-foreground hover:mouse-pointer"
             >
-              {"Download Resume"}
-            </a>
+              Download Resume
+            </button>
           </div>
         </div>
         <div className="flex flex-col gap-3 border-t border-border/70 pt-6 text-xs text-foreground/60 md:flex-row md:items-center md:justify-between">

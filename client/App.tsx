@@ -6,6 +6,7 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CaseStudyPlaceholder from "./pages/CaseStudyPlaceholder";
 import Index from "./pages/Index";
+import Resume from "./pages/resume";
 
 const App = () => (
   <ThemeProvider>
@@ -14,6 +15,7 @@ const App = () => (
         <Route element={<RootLayout />}>
           <Route index element={<Index />} />
         </Route>
+        <Route path="resume" element={<Resume />} />
         <Route path="*" element={<CaseStudyPlaceholder />} />
       </Routes>
     </BrowserRouter>

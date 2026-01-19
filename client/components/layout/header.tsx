@@ -2,7 +2,7 @@ import { personalInfo, sections } from "@/data/site-content";
 import { getIcon } from "@/lib/icons";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ThemeToggle } from "./theme-toggle";
 
 const NAV_ITEMS = sections.map((section) => ({
@@ -18,6 +18,7 @@ const getHash = (value: string | null | undefined) =>
   typeof value === "string" ? value : "";
 
 export const Header = () => {
+  const navigate = useNavigate();
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const activeHash = getHash(location.hash);
@@ -62,15 +63,14 @@ export const Header = () => {
           ))}
         </nav>
         <div className="flex items-center gap-3">
-          <a
-            href={personalInfo.resumeURL}
+          <div
+            onClick={()=> navigate("/resume")}
             className="hidden items-center gap-2 rounded-full border border-border/70 px-4 py-2 text-sm font-medium text-foreground/80 transition-all hover:-translate-y-0.5 hover:border-foreground hover:text-foreground md:flex"
-            target="_blank"
             rel="noreferrer"
           >
             Resume
             <ArrowIcon className="h-4 w-4" />
-          </a>
+          </div>
           <ThemeToggle />
           <button
             type="button"
