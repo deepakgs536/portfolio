@@ -3,13 +3,13 @@ import { Download, ArrowLeft } from "lucide-react";
 import { useTheme } from "@/components/layout/theme-provider";
 
 export const handleDownload = () => {
-    const link = document.createElement("a");
-    link.href = "/deepakgs536.pdf";
-    link.download = "deepakgs536.pdf";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
+  const link = document.createElement("a");
+  link.href = "/deepakgs536.pdf";
+  link.download = "deepakgs536.pdf";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
 
 export default function Resume() {
   const { theme } = useTheme();

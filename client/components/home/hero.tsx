@@ -9,24 +9,24 @@ export const Hero = () => {
   const SparklesIcon = getIcon("Sparkles");
   const QuoteIcon = getIcon("Quote");
 
-    const isActives = ["LinkedIn", "GitHub", "Leetcode"];
-    const [isHovered, setIsHovered] = useState<string>("");
-    const [isActive, setIsActive] = useState<string>("LinkedIn");
+  const isActives = ["LinkedIn", "GitHub", "Leetcode"];
+  const [isHovered, setIsHovered] = useState<string>("");
+  const [isActive, setIsActive] = useState<string>("LinkedIn");
 
-    useEffect(() => {
-      if (isHovered) {
-        setIsActive("");
-        return;
-      }
-      const interval = setInterval(() => {
-        setIsActive((prev) => { 
-          const currentIndex = isActives.indexOf(prev);
-          const nextIndex = (currentIndex + 1) % isActives.length;
-          return isActives[nextIndex];
-        } );
-      }, 500);
-      return () => clearInterval(interval);
-    }, [isHovered]);
+  useEffect(() => {
+    if (isHovered) {
+      setIsActive("");
+      return;
+    }
+    const interval = setInterval(() => {
+      setIsActive((prev) => {
+        const currentIndex = isActives.indexOf(prev);
+        const nextIndex = (currentIndex + 1) % isActives.length;
+        return isActives[nextIndex];
+      });
+    }, 500);
+    return () => clearInterval(interval);
+  }, [isHovered]);
 
   return (
     <section id="home" className="relative overflow-hidden">
@@ -101,13 +101,12 @@ export const Hero = () => {
                       href={link.url}
                       target="_blank"
                       rel="noreferrer"
-                      className={`group relative inline-flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-300 ${
-                          isActive === link.name || isHovered === link.name
+                      className={`group relative inline-flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-300 ${isActive === link.name || isHovered === link.name
                           ? 'border-foreground text-foreground shadow-lg scale-110'
                           : 'border-border/70 text-foreground/70 hover:border-foreground hover:text-foreground'
-                      } hover:-translate-y-0.5`}
-                      onMouseEnter={()=>setIsHovered(link.name)} 
-                      onMouseLeave={()=>setIsHovered("")}
+                        } hover:-translate-y-0.5`}
+                      onMouseEnter={() => setIsHovered(link.name)}
+                      onMouseLeave={() => setIsHovered("")}
                     >
                       <Icon className="h-5 w-5" />
                     </a>

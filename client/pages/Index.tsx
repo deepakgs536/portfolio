@@ -4,6 +4,7 @@ import { ProjectsSection } from "@/components/home/projects-section";
 import { AboutSection } from "@/components/home/about-section";
 import { SkillsSection } from "@/components/home/skills-section";
 import { ContactSection } from "@/components/home/contact-section";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
 export default function Index() {
   const sections = [
@@ -42,9 +43,11 @@ export default function Index() {
 
   return (
     <div className="space-y-28 md:space-y-32">
-      {sections.map((section) => (
+      {sections.map((section, index) => (
         <section key={section.id} id={section.id}>
-          {section.component}
+          <ScrollReveal delay={index * 0.1}>
+            {section.component}
+          </ScrollReveal>
         </section>
       ))}
     </div>
